@@ -1,0 +1,59 @@
+{
+  "analytics": {
+    "visitors": 147,
+    "resumeDownloads": 34,
+    "contactRequests": 12,
+    "projectViews": 250,
+    "chatbotUsage": 98
+  },
+  "contacts": [
+    {
+      "id": "seed-1",
+      "name": "Harsh Vardhan",
+      "email": "harsh@techcorp.in",
+      "message": "Hey Ganesh, love your AI projects! Let's connect for an internship opportunity in our AI agents team.",
+      "date": "2026-06-18T13:53:02.526Z"
+    },
+    {
+      "id": "seed-2",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@mlresearch.org",
+      "message": "Impressive portfolio. Would you be interested in collaborating on an open-source Generative AI project?",
+      "date": "2026-06-20T13:53:02.526Z"
+    }
+  ],
+  "contactViewers": [
+    {
+      "id": "v-1",
+      "name": "Google Play Dev Scout",
+      "email": "google-scout@google.com",
+      "loginType": "Google Account",
+      "date": "2026-06-21T01:53:02.526Z"
+    },
+    {
+      "id": "v-2",
+      "name": "Meta AI Recruiting Lead",
+      "email": "talentscout@meta.com",
+      "loginType": "Google Account",
+      "date": "2026-06-21T11:53:02.526Z"
+    }
+  ],
+  "oauthEmailLogs": [
+    {
+      "id": "log-1782054229793-48",
+      "email": "eganesh7997@gmail.com",
+      "name": "Ganesh Enyaram",
+      "provider": "Google SSO",
+      "status": "Simulated on Cloud",
+      "date": "2026-06-21T15:03:49.793Z"
+    },
+    {
+      "id": "log-1782050244553-253",
+      "email": "eganesh7997@gmail.com",
+      "name": "Ganesh E",
+      "provider": "Google SSO",
+      "status": "Simulated on Cloud",
+      "date": "2026-06-21T13:57:24.553Z"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Ganesh Enyaram Portfolio",
+  "description": "A high-performance futuristic AI & Data Science portfolio website for Ganesh Enyaram, featuring custom AI chatbot, resume analyzer, career advisor, and interactive analytics tracking.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

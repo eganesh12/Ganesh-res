@@ -1,0 +1,24 @@
+{
+  "collection": "oauth_welcome_email_logs",
+  "database": "portfolio_mongodb_datasheet",
+  "totalDocuments": 2,
+  "lastUpdated": "2026-06-21T15:15:09.968Z",
+  "documents": [
+    {
+      "id": "log-1782054229793-48",
+      "email": "eganesh7997@gmail.com",
+      "name": "Ganesh Enyaram",
+      "provider": "Google SSO",
+      "status": "Simulated on Cloud",
+      "date": "2026-06-21T15:03:49.793Z"
+    },
+    {
+      "id": "log-1782050244553-253",
+      "email": "eganesh7997@gmail.com",
+      "name": "Ganesh E",
+      "provider": "Google SSO",
+      "status": "Simulated on Cloud",
+      "date": "2026-06-21T13:57:24.553Z"
+    }
+  ]
+}

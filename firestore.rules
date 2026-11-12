@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global safety net - Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Global Safety Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isEmailVerified() {
+      return isSignedIn();
+    }
+
+    function isAdmin() {
+      return isEmailVerified() && (request.auth.token.email == 'eganesh7997@gmail.com');
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // 3. Entity Blueprint Validations
+    function isValidContactViewer(data) {
+      return data.keys().hasAll(['id', 'name', 'email', 'loginType', 'date']) &&
+             data.keys().size() == 5 &&
+             data.id is string && data.id.size() <= 128 &&
+             data.name is string && data.name.size() <= 128 &&
+             data.email is string && data.email.size() <= 128 &&
+             data.loginType is string && data.loginType.size() <= 64 &&
+             data.date is string && data.date.size() <= 64 &&
+             data.email == request.auth.token.email;
+    }
+
+    function isValidContactMessage(data) {
+      return data.keys().hasAll(['id', 'name', 'email', 'message', 'date']) &&
+             data.keys().size() == 5 &&
+             data.id is string && data.id.size() <= 128 &&
+             data.name is string && data.name.size() <= 128 &&
+             data.email is string && data.email.size() <= 128 &&
+             data.message is string && data.message.size() <= 5000 &&
+             data.date is string && data.date.size() <= 64 &&
+             data.email == request.auth.token.email;
+    }
+
+    // 4. Collection Matches
+    match /contactViewers/{viewerId} {
+      allow get: if isEmailVerified() && (existing().email == request.auth.token.email || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isEmailVerified() && isValidId(viewerId) && isValidContactViewer(incoming());
+      allow update: if isEmailVerified() && isValidId(viewerId) && isValidContactViewer(incoming()) && (incoming().email == existing().email) && (incoming().id == existing().id);
+      allow delete: if false;
+    }
+
+    match /contacts/{contactId} {
+      allow get: if isAdmin();
+      allow list: if isAdmin();
+      allow create: if isEmailVerified() && isValidId(contactId) && isValidContactMessage(incoming());
+      allow update: if isEmailVerified() && isValidId(contactId) && isValidContactMessage(incoming()) && (incoming().email == existing().email) && (incoming().id == existing().id);
+      allow delete: if false;
+    }
+  }
+}
